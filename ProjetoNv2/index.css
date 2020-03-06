@@ -8,3 +8,7 @@ body{
     justify-content: center;
     flex-flow: column;
 }
+.console {
+    display: flex;
+    flex-flow: column;
+}
