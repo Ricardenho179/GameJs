@@ -7,8 +7,40 @@ body{
     align-items: center;
     justify-content: center;
     flex-flow: column;
+    height: 608px;
 }
 .console {
     display: flex;
     flex-flow: column;
+    width: 76%;
 }
+.posicionaControle {
+    display: flex;
+    width: 14%;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 2%;
+}
+#idCanvas{
+    position: absolute;
+    left: 2%;
+}
+.posicionador {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: -1.9%;
+    
+}
+body > div.posicionaControle > div > div > button:nth-child(2) {
+    width: 66px;
+}
+/* canvas::before { 
+    content: "";
+    background-color: blue;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+  } */

@@ -1,10 +1,10 @@
-alert("Aposte em um quadrado: 1: Vermelho, 2: Amarelo, 3: Azul ou 4: Pretinho")
+alert("Corrida de quadrados")
 function startGame() {
     myGameArea.start();
-    redGamePiece = new component(75, 75, "red", 10, 10);
-    yellowGamePiece = new component(75, 75, "yellow", 10, 60);    
-    blueGamePiece = new component(75, 75, "blue", 10, 110);
-    myGamePiece = new component(75, 75, "black", 10, 160);
+    GamePiece1 = new component(15, 15, "grey", 10, 10);
+    GamePiece2 = new component(15, 15, "green", 10, 60);    
+    GamePiece3 = new component(15, 15, "purple", 10, 110);
+    myGamePiece = new component(15, 15, "black", 10, 160);
 }
 
 
@@ -29,8 +29,9 @@ function component(width, height, color, x, y) {
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 1180;
-        this.canvas.height = 570;
+        this.canvas.width = 1080;
+        this.canvas.height = 500;
+        this.canvas.id = "idCanvas";
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
@@ -45,13 +46,13 @@ function updateGameArea() {
     myGameArea.clear();
     myGamePiece.newPos();
     myGamePiece.update();
-    redGamePiece.x += 1.5;
-    redGamePiece.update();
-    yellowGamePiece.x += 3;
-    yellowGamePiece.y += 3;
-    yellowGamePiece.update();
-    blueGamePiece.x += 1.9;
-    blueGamePiece.update();
+    GamePiece1.x += 1.5;
+    GamePiece1.update();
+    GamePiece2.x += 3;
+    GamePiece2.y += 3;
+    GamePiece2.update();
+    GamePiece3.x += 1.9;
+    GamePiece3.update();
   }
   function moveup() {
     myGamePiece.speedY -= 1;

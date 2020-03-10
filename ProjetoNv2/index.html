@@ -4,18 +4,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="stylesheet" href="index.css">
 </head>
+
 <body onload="startGame()">
     
-    <script src="index.js"></script>
-    <p>Essa é a área onde será colocada o nosso joguinho</p>
-
-    <div class="console">
-        <button onclick="moveup()">CIMA</button>
-        <div class="direitaEsquerda">
-            <button onclick="moveleft()">Esquerda</button>
-            <button onclick="moveright()">Direita</button>
-        </div>
-        <button onclick="movedown()">BAIXO</button>
+    <div class="posicionador">
+        <h1>GAME</h1>
     </div>
+   
+
+    <div class="posicionaControle">
+        <p><b>Controle o quadrado preto</b></p>
+        <div class="console">
+            <button onclick="moveup()">CIMA</button>
+            <div class="direitaEsquerda">
+                <button onclick="moveleft()">Esquerda</button>
+                <button onclick="moveright()">Direita</button>
+            </div>
+            <button onclick="movedown()">BAIXO</button>
+        </div>
+    </div>
+    <script src="index.js"></script>
 </body>
 </html>
