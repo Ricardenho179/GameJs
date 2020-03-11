@@ -14,14 +14,32 @@ body{
     flex-flow: column;
     width: 76%;
 }
-.posicionaControle {
+.posicionaControlePreto {
     display: flex;
-    width: 14%;
+    width: 16%;
     flex-flow: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: absolute;
-    right: 2%;
+    right: 0%;
+    bottom: 20%;
+    border: 7px solid black;
+    height: 156px;
+}
+.posicionaControleCinza {
+    display: flex;
+    width: 16%;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    height: 191px;
+    right: 0%;
+    bottom: 57.5%;
+    border: 7px solid grey;
+}
+.Texto {
+    text-align: center;
 }
 #idCanvas{
     position: absolute;
@@ -34,8 +52,15 @@ body{
     top: -1.9%;
     
 }
-body > div.posicionaControle > div > div > button:nth-child(2) {
-    width: 66px;
+body > div > div > div > button:nth-child(2) {
+    width: 86.5px;
+}
+.posicionaInformaçõesVerde {
+    position: absolute;
+    top: 94%;
+    color: green;
+    width: 64%;
+    font-size: 21px;
 }
 /* canvas::before { 
     content: "";
