@@ -21,10 +21,11 @@ body{
     justify-content: flex-start;
     align-items: center;
     position: absolute;
-    right: 0%;
+    top: 42.9%;
     bottom: 20%;
     border: 7px solid black;
-    height: 156px;
+    height: 172px;
+    right: 0%;
 }
 .posicionaControleCinza {
     display: flex;
@@ -38,29 +39,34 @@ body{
     bottom: 57.5%;
     border: 7px solid grey;
 }
+.posicionaInformaçõesVerde {
+    display: flex;
+    width: 16%;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    height: 339px;
+    right: 0%;
+    top: 73%;
+    border: 7px solid green;
+}
 .Texto {
     text-align: center;
 }
 #idCanvas{
     position: absolute;
     left: 2%;
+    top: 11%;
 }
 .posicionador {
     display: flex;
     justify-content: center;
     position: absolute;
     top: -1.9%;
-    
 }
 body > div > div > div > button:nth-child(2) {
     width: 86.5px;
-}
-.posicionaInformaçõesVerde {
-    position: absolute;
-    top: 94%;
-    color: green;
-    width: 64%;
-    font-size: 21px;
 }
 /* canvas::before { 
     content: "";
