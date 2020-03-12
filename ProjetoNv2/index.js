@@ -1,14 +1,17 @@
-alert("Descubra as funcionalidades de cada quadrado")
+// alert("Descubra as funcionalidades de cada quadrado")
 var obstacle;
 function startGame() {
     myGameArea.start();
-    GamePiece1 = new component(15, 15, "grey", 10, 10);
-    GamePiece2 = new component(15, 15, "green", 10, 160);    
-    GamePiece3 = new component(15, 15, "purple", 0, 0);
-    myGamePiece = new component(15, 15, "black", 10, 60);
-    GamePiece4 = new component(15, 15, "blue",10, 110);
-    GamePiece5 = new component(15, 15, "red", 10, 210);
-    obstacle  = new component(10, 200, "yellow", 300, 120);
+    GamePiece1 = new component(15, 15, "grey", 20, 20);
+    GamePiece2 = new component(15, 15, "green", 20, 170);    
+    GamePiece3 = new component(15, 15, "purple", 20, 270);
+    myGamePiece = new component(15, 15, "black", 20, 70);
+    GamePiece4 = new component(15, 15, "blue",20, 120);
+    GamePiece5 = new component(15, 15, "red", 20, 220);
+    obstacle  = new component(10, 700, "yellow", 1070, 0);
+    obstacle2  = new component(1100, 10, "yellow", 0, 0);
+    obstacle3  = new component(1100, 10, "yellow", 0, 690);
+    obstacle4  = new component(10, 700, "yellow", 0, 0);
 }
 
 function component(width, height, color, x, y) {
@@ -45,6 +48,19 @@ function component(width, height, color, x, y) {
       }
       return crash;
     }
+    // this.resetSpeed = function(otherobj) {
+    //   var myleft = this.x;
+    //   var myright = this.x + (this.width);
+    //   var mytop = this.y;
+    //   var mybottom = this.y + (this.height);
+    //   var otherleft = otherobj.x;
+    //   var otherright = otherobj.x + (otherobj.width);
+    //   var othertop = otherobj.y;
+    //   var otherbottom = otherobj.y + (otherobj.height);
+    //   if(otherright) {
+        
+    //   }
+    // }
 }
 
 var myGameArea = {
@@ -80,10 +96,31 @@ var myGameArea = {
 
 function updateGameArea() {
     //caso queira criar uma trilha de onde foi andado tirar o clear()
-    if (myGamePiece.crashWith(obstacle),GamePiece1.crashWith(obstacle)) {
-      myGamePiece.newPos()
-
-    } else {
+    if (myGamePiece.crashWith(obstacle) || myGamePiece.crashWith(obstacle2)
+    || myGamePiece.crashWith(obstacle3)|| myGamePiece.crashWith(obstacle4)) {
+      myGamePiece.stop();
+    } else if (GamePiece1.crashWith(obstacle)|| GamePiece1.crashWith(obstacle2)
+    || GamePiece1.crashWith(obstacle3)|| GamePiece1.crashWith(obstacle4)) {
+      GamePiece1.stop()
+    } else if(GamePiece2.crashWith(obstacle) || GamePiece2.crashWith(obstacle2)
+    || GamePiece2.crashWith(obstacle3)|| GamePiece2.crashWith(obstacle4)) {
+      GamePiece2.stop()
+    } 
+    else if(GamePiece3.crashWith(obstacle)|| GamePiece3.crashWith(obstacle2)
+    || GamePiece3.crashWith(obstacle3)|| GamePiece3.crashWith(obstacle4)) {
+      GamePiece3.stop()
+    }
+     else if(GamePiece4.crashWith(obstacle)
+     || GamePiece4.crashWith(obstacle2)|| GamePiece4.crashWith(obstacle3)
+     || GamePiece4.crashWith(obstacle4)) {
+      GamePiece4.stop()
+    } else if(GamePiece5.crashWith(obstacle)
+    || GamePiece5.crashWith(obstacle2)|| GamePiece5.crashWith(obstacle3)
+    || GamePiece5.crashWith(obstacle4)) {
+      GamePiece5.stop()
+    }
+    
+    else {
     myGameArea.clear();
     myGamePiece.newPos();
     myGamePiece.update();
@@ -97,11 +134,11 @@ function updateGameArea() {
     if (myGameArea.keys && myGameArea.keys[83]) {GamePiece2.speedY = 3; }
     GamePiece2.newPos();
     GamePiece2.update();
-    if (myGameArea.x && myGameArea.y) {
-      GamePiece3.x = myGameArea.x;
-      GamePiece3.y = myGameArea.y;
-    }
-    GamePiece3.update();
+    // if (myGameArea.x && myGameArea.y) {
+    //   GamePiece3.x = myGameArea.x;
+    //   GamePiece3.y = myGameArea.y;
+    // }
+    // GamePiece3.update();
     GamePiece4.newPos();
     GamePiece4.speedX = 0;
     GamePiece4.speedY = 0;
@@ -111,15 +148,14 @@ function updateGameArea() {
     GamePiece4.speedY = 0;
     GamePiece5.update();
     obstacle.update();
+    obstacle2.update();
+    obstacle3.update();
+    obstacle4.update();
   }
 }
 //CIMA
 function moveupBlackPiece() {
   myGamePiece.speedY -= 1;
-}
-function stopMove() {
-  alert("PARA DE ANDA FDP")
-  myGamePiece.speed == 0;
 }
 function moveUpGreyPiece() {
   GamePiece1.speedY -=1;
