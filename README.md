@@ -1,1 +1,1 @@
-Olá povo, essa é minha continuação nos estudos JS com canvas e animações de games, irei dar prosseguimento e desenvolver um gamezinho do meu jeito, fiquem a vontade para opinar e ajudar no que for :D
+Baixem o meu gamezinho, ainda esta incompleto mas estarei atualizando ele aos poucos, palpitem sobre ou me dem sugestões do que fazer nele. Obrigado!
