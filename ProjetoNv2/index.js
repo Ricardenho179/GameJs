@@ -6,12 +6,13 @@ function startGame() {
     myGamePiece = new component(15, 15, "black", 20, 120);
     GamePiece4 = new componentAutomatic(15, 15, "blue",27, 170);
     GamePiece5 = new componentAutomatic(15, 15, "red", 27, 220);
-    GamePiece3 = new component(15, 15, "purple", 20, 270);
+    GamePiece6 = new componentAutomatic(15,15,"orange", 27, 270)
+    GamePiece3 = new component(15, 15, "purple", 20, 320);
     obstacle  = new component(10, 700, "yellow", 1070, 0);
     obstacle2  = new component(1100, 10, "yellow", 0, 0);
     obstacle3  = new component(1100, 10, "yellow", 0, 690);
     obstacle4  = new component(10, 700, "yellow", 0, 0);
-    area = new component(30, 30, "#11b06a", 300, 300);
+    area = new component(30, 30, "#11b06a", 995, 560);
 }
 function componentAutomatic(width, height, color, x, y, type) {
   this.type = type;
@@ -38,19 +39,35 @@ function componentAutomatic(width, height, color, x, y, type) {
     if (this.x >= 300) {
       this.x -= this.speed * 2;
       this.y += this.speed * 2;
+      if(this.y >= 300) {
+        this.y -= this.speed * 2;
+        this.x -= this.speed * 0;
+      }
     }
   }
   this.newPosRed = function() {
     this.angle += this.moveAngle * Math.PI / 30;
-    this.x += this.speed * 3;
-    this.y -= this.speed * 0;
+    this.x += this.speed * 50;
     if (this.x >= 100) {
-      this.x -= this.speed * 3;
-      this.y += this.speed * 3;
+      this.x -= this.speed * 50;
+      this.y += this.speed * 50;
       if(this.y >= 300) {
-        this.y -= this.speed * 3;
-        this.x += this.speed * 3;
+        this.y -= this.speed * 50;
+        this.x += this.speed * 50;
+        if(this.x >=300) {
+          this.x -= this.speed * 50;
+
+        }
       }
+    }
+  }
+  this.newPosOrange = function() {
+    this.angle += this.moveAngle * Math.PI / 30;
+    this.x += this.speed * 5;
+    this.y -= this.speed * 0;
+    if (this.x >= 400) {
+      this.x = 600;
+      this.y = 600;  
     }
   }
   this.crashWith = function(otherobj) {
@@ -145,88 +162,103 @@ function updateGameArea() {
     || myGamePiece.crashWith(obstacle3)|| myGamePiece.crashWith(obstacle4) 
       || myGamePiece.crashWith(area)) {
         if(myGamePiece.crashWith(area)) {
-          alert("O quadrado preto ganhou");
+          alert("O quadrado preto ganhou, por favor aperte F5");
         }
-        alert("O quadrado preto perdeu");
+        alert("O quadrado preto perdeu, por favor aperte F5");
         myGamePiece.stop();
         
     } else if (GamePiece1.crashWith(obstacle)|| GamePiece1.crashWith(obstacle2)
     || GamePiece1.crashWith(obstacle3)|| GamePiece1.crashWith(obstacle4)
     || GamePiece1.crashWith(area)) {
       if(GamePiece1.crashWith(area)) {
-        alert("O quadrado cinza ganhou");
+        alert("O quadrado cinza ganhou, por favor aperte F5");
       }
       GamePiece1.stop()
-      alert("O quadrado cinza perdeu");
+      alert("O quadrado cinza perdeu, por favor aperte F5");
     } else if(GamePiece2.crashWith(obstacle) || GamePiece2.crashWith(obstacle2)
     || GamePiece2.crashWith(obstacle3)|| GamePiece2.crashWith(obstacle4)
     || GamePiece2.crashWith(area)) {
       if(GamePiece2.crashWith(area)) {
-        alert("O quadrado verde ganhou");
+        alert("O quadrado verde ganhou, por favor aperte F5");
       }
-      alert("O quadrado verde perdeu");
+      alert("O quadrado verde perdeu, por favor aperte F5");
       GamePiece2.stop();
     } 
     else if(GamePiece3.crashWith(obstacle)|| GamePiece3.crashWith(obstacle2)
     || GamePiece3.crashWith(obstacle3)|| GamePiece3.crashWith(obstacle4)
     || GamePiece3.crashWith(area)) {
       if(GamePiece3.crashWith(area)) {
-        alert("O quadrado roxo ganhou");
+        alert("O quadrado roxo ganhou, por favor aperte F5");
       }
-      alert("O quadrado roxo perdeu");
+      alert("O quadrado roxo perdeu, por favor aperte F5");
       GamePiece3.stop();
     }
      else if(GamePiece4.crashWith(obstacle)
      || GamePiece4.crashWith(obstacle2)|| GamePiece4.crashWith(obstacle3)
      || GamePiece4.crashWith(obstacle4)|| GamePiece4.crashWith(area)) {
       if(GamePiece4.crashWith(area)) {
-        alert("O quadrado azul ganhou");
+        alert("O quadrado azul ganhou, por favor aperte F5");
       }
-      alert("O quadrado azul perdeu");
+      alert("O quadrado azul perdeu, por favor aperte F5");
       GamePiece4.stop()
       
     } else if(GamePiece5.crashWith(obstacle)
     || GamePiece5.crashWith(obstacle2)|| GamePiece5.crashWith(obstacle3)
     || GamePiece5.crashWith(obstacle4)|| GamePiece5.crashWith(area)) {
       if(GamePiece5.crashWith(area)) {
-        alert("O quadrado vermelho ganhou");
+        alert("O quadrado vermelho ganhou, por favor aperte F5");
       }
-      alert("O quadrado vermelho perdeu");
+      alert("O quadrado vermelho perdeu, por favor aperte F5");
       GamePiece5.stop();
+    }
+    else if (GamePiece6.crashWith(obstacle)|| GamePiece6.crashWith(obstacle2)
+    || GamePiece6.crashWith(obstacle3)|| GamePiece6.crashWith(obstacle4)
+    || GamePiece6.crashWith(area)) {
+      if(GamePiece6.crashWith(area)) {
+        alert("O quadrado laranja ganhou, por favor aperte F5");
+      }
+      alert("O quadrado laranja perdeu, por favor aperte F5");
+      GamePiece6.stop();
     }
     else {
     myGameArea.clear();
+    //peça preta
     myGamePiece.newPos();
     myGamePiece.update();
+    //peça cinza
     GamePiece1.newPos();
     GamePiece1.update();
+    //peça verde
     GamePiece2.speedX = 0;
     GamePiece2.speedY = 0;
-    if (myGameArea.keys && myGameArea.keys[65]) {GamePiece2.speedX = -50; }
-    if (myGameArea.keys && myGameArea.keys[68]) {GamePiece2.speedX = 50; }
-    if (myGameArea.keys && myGameArea.keys[87]) {GamePiece2.speedY = -50; }
-    if (myGameArea.keys && myGameArea.keys[83]) {GamePiece2.speedY = 50; }
+    if (myGameArea.keys && myGameArea.keys[65]) {GamePiece2.speedX = -3; }
+    if (myGameArea.keys && myGameArea.keys[68]) {GamePiece2.speedX = 3; }
+    if (myGameArea.keys && myGameArea.keys[87]) {GamePiece2.speedY = -3; }
+    if (myGameArea.keys && myGameArea.keys[83]) {GamePiece2.speedY = 3; }
     GamePiece2.newPos();
     GamePiece2.update();
+    //peça roxa
     // if (myGameArea.x && myGameArea.y) {
     //   GamePiece3.x = myGameArea.x;
     //   GamePiece3.y = myGameArea.y;
     // }
     // GamePiece3.update();
+    //peça azul
     GamePiece4.newPosBlue();
     GamePiece4.update();
+    //peça vermelha
     GamePiece5.newPosRed();
     GamePiece5.update();
+    //peça laranja
+    GamePiece6.newPosOrange();
+    GamePiece6.update()
+    //OBSTACULOS
     obstacle.update();
     obstacle2.update();
     obstacle3.update();
     obstacle4.update();
+    //AREA DE VITÓRIA
     area.update();
-    // fazendo o cara enrar numa area e ganhar
-    if (myGamePiece.x > area || myGamePiece.y > area) {
-      alert("Você ganhou!");
-      crash = true
-    }
   }
 }
 //CIMA
@@ -243,8 +275,6 @@ function moveDownBlackPiece() {
 function moveDownGreyPiece() {
   GamePiece1.speedY +=1;
 }
-// GamePiece2.speedY +=1;
-// GamePiece3.speedY +=1;
 //Esquerda
 function moveLeftBlackPiece() {
   myGamePiece.speedX -= 1;
@@ -252,8 +282,6 @@ function moveLeftBlackPiece() {
 function moveLeftGreyPiece() {
   GamePiece1.speedX -= 1;
 }
-// GamePiece2.speedX -= 1;
-// GamePiece3.speedX -= 1;
 //Direita
 function moveRightBlackPiece() {
   myGamePiece.speedX += 1;  
@@ -261,14 +289,9 @@ function moveRightBlackPiece() {
 function moveRightGreyPiece() {
 GamePiece1.speedX += 1;
 }
-// GamePiece2.speedX += 1;
-// GamePiece3.speedX += 1;
-//Stop
+//função de parar peça cinza
 function stopMove() {
   GamePiece1.speedX = 0;
   GamePiece1.speedY = 0;
-  GamePiece2.speedX = 0;
-  GamePiece2.speedY = 0;
-  GamePiece3.speedX = 0;
-  GamePiece3.speedY = 0;
 }
+
