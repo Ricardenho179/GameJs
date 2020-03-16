@@ -1,18 +1,29 @@
 // alert("Descubra as funcionalidades de cada quadrado")
 function startGame() {
     myGameArea.start();
-    GamePiece1 = new component(15, 15, "grey", 20, 20);
-    GamePiece2 = new component(15, 15, "green", 20, 70);    
-    myGamePiece = new component(15, 15, "black", 20, 120);
-    GamePiece4 = new componentAutomatic(15, 15, "blue",27, 170);
-    GamePiece5 = new componentAutomatic(15, 15, "red", 27, 220);
-    GamePiece6 = new componentAutomatic(15,15,"orange", 27, 270)
-    GamePiece3 = new component(15, 15, "purple", 20, 320);
+    GamePiece1 = new component(15, 15, "grey", 30, 20);
+    GamePiece2 = new component(15, 15, "green", 30, 70);    
+    myGamePiece = new component(15, 15, "black", 30, 120);
+    GamePiece4 = new componentAutomatic(15, 15, "blue",37, 170);
+    GamePiece5 = new componentAutomatic(15, 15, "red", 37, 220);
+    GamePiece6 = new componentAutomatic(15,15,"orange", 37, 270)
+    GamePiece3 = new component(15, 15, "purple", 30, 320);
     obstacle  = new component(10, 700, "yellow", 1070, 0);
     obstacle2  = new component(1100, 10, "yellow", 0, 0);
     obstacle3  = new component(1100, 10, "yellow", 0, 690);
     obstacle4  = new component(10, 700, "yellow", 0, 0);
-    area = new component(30, 30, "#11b06a", 995, 560);
+    obstacle5 = new component(10, 150, "yellow", 70, 0);
+    obstacle6 = new component(10, 300, "yellow", 900, 360);
+    obstacle7 = new component(300, 10, "yellow", 600, 400);
+    obstacle8 = new component(620, 10, "yellow", 250, 550);
+    obstacle9 = new component(400, 10, "yellow", 500, 510);
+    blackObstacle = new component(10,200, "black", 310,0);
+    greyObstacle = new component(10, 430, "grey", 770,35);
+    greenObstacle = new component(570, 10, "green", 0,400);
+    blueObstacle = new component(10, 180 ,"blue", 110, 50);
+    orangeObstacle = new component(210, 10, "orange", 0, 550);
+    redObstacle = new component(1030,10,"red", 0,230);
+    area = new component(30, 30, "#11b06a", 860, 470);
 }
 function componentAutomatic(width, height, color, x, y, type) {
   this.type = type;
@@ -36,27 +47,28 @@ function componentAutomatic(width, height, color, x, y, type) {
     // this.angle += this.moveAngle * Math.PI / 30;
     this.x += this.speed * 2;
     this.y -= this.speed * 0;
-    if (this.x >= 300) {
+    if (this.x >= 290) {
       this.x -= this.speed * 2;
-      this.y += this.speed * 2;
-      if(this.y >= 300) {
-        this.y -= this.speed * 2;
-        this.x -= this.speed * 0;
-      }
+      this.y += this.speed * 0;
     }
   }
   this.newPosRed = function() {
     this.angle += this.moveAngle * Math.PI / 30;
-    this.x += this.speed * 50;
-    if (this.x >= 100) {
-      this.x -= this.speed * 50;
-      this.y += this.speed * 50;
-      if(this.y >= 300) {
-        this.y -= this.speed * 50;
-        this.x += this.speed * 50;
-        if(this.x >=300) {
-          this.x -= this.speed * 50;
-
+    this.y += this.speed * 5;
+    this.x -= this.speed * 0;
+    if (this.y >= 300) {
+      this.x += this.speed * 5;
+      this.y -= this.speed * 5;
+      if(this.x >= 580 ) {
+        this.x -= this.speed * 5;
+        this.y += this.speed * 5;
+        if(this.y >= 495) {
+          this.y -= this.speed * 5;
+          this.x += this.speed * 5;
+          if(this.x >= 800) {
+            this.y -= this.speed * 0;
+            this.x -= this.speed * 5;
+          }
         }
       }
     }
@@ -158,67 +170,105 @@ var myGameArea = {
 
 function updateGameArea() {
     //caso queira criar uma trilha de onde foi andado tirar o clear()
-    if (myGamePiece.crashWith(obstacle) || myGamePiece.crashWith(obstacle2)
-    || myGamePiece.crashWith(obstacle3)|| myGamePiece.crashWith(obstacle4) 
-      || myGamePiece.crashWith(area)) {
+    if (myGamePiece.crashWith(obstacle) || myGamePiece.crashWith(obstacle2) || 
+    myGamePiece.crashWith(obstacle3)|| myGamePiece.crashWith(obstacle4) || 
+    myGamePiece.crashWith(obstacle5) || myGamePiece.crashWith(obstacle6) || 
+    myGamePiece.crashWith(obstacle8) || myGamePiece.crashWith(obstacle9) ||
+    myGamePiece.crashWith(greenObstacle) || myGamePiece.crashWith(greyObstacle) ||
+    myGamePiece.crashWith(orangeObstacle) || 
+    myGamePiece.crashWith(blueObstacle) || myGamePiece.crashWith(redObstacle) ||
+
+    myGamePiece.crashWith(area)) {
         if(myGamePiece.crashWith(area)) {
           alert("O quadrado preto ganhou, por favor aperte F5");
         }
         alert("O quadrado preto perdeu, por favor aperte F5");
-        myGamePiece.stop();
         
-    } else if (GamePiece1.crashWith(obstacle)|| GamePiece1.crashWith(obstacle2)
-    || GamePiece1.crashWith(obstacle3)|| GamePiece1.crashWith(obstacle4)
-    || GamePiece1.crashWith(area)) {
+        
+    } else if (GamePiece1.crashWith(obstacle)|| GamePiece1.crashWith(obstacle2) || 
+      GamePiece1.crashWith(obstacle3)|| GamePiece1.crashWith(obstacle4)|| 
+      GamePiece1.crashWith(obstacle5) || GamePiece1.crashWith(obstacle6) ||
+      GamePiece1.crashWith(obstacle8) || GamePiece1.crashWith(obstacle9) ||
+      GamePiece1.crashWith(greenObstacle) || GamePiece1.crashWith(blackObstacle) ||
+      GamePiece1.crashWith(orangeObstacle) || 
+      GamePiece1.crashWith(blueObstacle) || GamePiece1.crashWith(redObstacle) ||
+
+
+      GamePiece1.crashWith(area)) {
       if(GamePiece1.crashWith(area)) {
         alert("O quadrado cinza ganhou, por favor aperte F5");
       }
-      GamePiece1.stop()
       alert("O quadrado cinza perdeu, por favor aperte F5");
-    } else if(GamePiece2.crashWith(obstacle) || GamePiece2.crashWith(obstacle2)
-    || GamePiece2.crashWith(obstacle3)|| GamePiece2.crashWith(obstacle4)
-    || GamePiece2.crashWith(area)) {
+      
+    } else if(GamePiece2.crashWith(obstacle) || GamePiece2.crashWith(obstacle2) || 
+    GamePiece2.crashWith(obstacle3)|| GamePiece2.crashWith(obstacle4)|| 
+    GamePiece2.crashWith(obstacle5) || GamePiece2.crashWith(obstacle6) ||
+    GamePiece2.crashWith(obstacle8) || GamePiece2.crashWith(obstacle9) ||   
+    GamePiece2.crashWith(blackObstacle) || GamePiece2.crashWith(greyObstacle) ||
+    GamePiece2.crashWith(orangeObstacle) || 
+    GamePiece2.crashWith(blueObstacle) || GamePiece2.crashWith(redObstacle) || 
+    GamePiece2.crashWith(area)) {
       if(GamePiece2.crashWith(area)) {
         alert("O quadrado verde ganhou, por favor aperte F5");
       }
       alert("O quadrado verde perdeu, por favor aperte F5");
-      GamePiece2.stop();
+      
     } 
-    else if(GamePiece3.crashWith(obstacle)|| GamePiece3.crashWith(obstacle2)
-    || GamePiece3.crashWith(obstacle3)|| GamePiece3.crashWith(obstacle4)
-    || GamePiece3.crashWith(area)) {
+    else if(GamePiece3.crashWith(obstacle)|| GamePiece3.crashWith(obstacle2) || 
+    GamePiece3.crashWith(obstacle3)|| GamePiece3.crashWith(obstacle4) || 
+    GamePiece3.crashWith(obstacle5) || GamePiece3.crashWith(obstacle6) ||
+    GamePiece3.crashWith(obstacle8) || GamePiece3.crashWith(obstacle9) ||
+    GamePiece3.crashWith(greenObstacle) || GamePiece3.crashWith(greyObstacle) ||
+    GamePiece3.crashWith(orangeObstacle) || GamePiece3.crashWith(blackObstacle) ||
+    GamePiece3.crashWith(blueObstacle) || GamePiece3.crashWith(redObstacle) ||
+    GamePiece3.crashWith(area)) {
       if(GamePiece3.crashWith(area)) {
         alert("O quadrado roxo ganhou, por favor aperte F5");
       }
       alert("O quadrado roxo perdeu, por favor aperte F5");
-      GamePiece3.stop();
+     
     }
-     else if(GamePiece4.crashWith(obstacle)
-     || GamePiece4.crashWith(obstacle2)|| GamePiece4.crashWith(obstacle3)
-     || GamePiece4.crashWith(obstacle4)|| GamePiece4.crashWith(area)) {
+     else if(GamePiece4.crashWith(obstacle) || GamePiece4.crashWith(obstacle2)|| 
+     GamePiece4.crashWith(obstacle3) || GamePiece4.crashWith(obstacle4)|| 
+     GamePiece4.crashWith(obstacle5) || GamePiece4.crashWith(obstacle6) ||
+     GamePiece4.crashWith(obstacle8) || GamePiece4.crashWith(obstacle9) ||
+     GamePiece4.crashWith(greenObstacle) || GamePiece4.crashWith(greyObstacle) ||
+     GamePiece4.crashWith(orangeObstacle) || GamePiece4.crashWith(blackObstacle) ||
+     GamePiece4.crashWith(redObstacle) ||
+     GamePiece4.crashWith(area)) {
       if(GamePiece4.crashWith(area)) {
         alert("O quadrado azul ganhou, por favor aperte F5");
       }
       alert("O quadrado azul perdeu, por favor aperte F5");
-      GamePiece4.stop()
       
-    } else if(GamePiece5.crashWith(obstacle)
-    || GamePiece5.crashWith(obstacle2)|| GamePiece5.crashWith(obstacle3)
-    || GamePiece5.crashWith(obstacle4)|| GamePiece5.crashWith(area)) {
+      
+    } else if(GamePiece5.crashWith(obstacle) || GamePiece5.crashWith(obstacle2)|| 
+    GamePiece5.crashWith(obstacle3) || GamePiece5.crashWith(obstacle4)||
+    GamePiece5.crashWith(obstacle5) || GamePiece5.crashWith(obstacle6) ||
+    GamePiece5.crashWith(obstacle8) || GamePiece5.crashWith(obstacle9) ||
+    GamePiece5.crashWith(greenObstacle) || GamePiece5.crashWith(greyObstacle) ||
+    GamePiece5.crashWith(orangeObstacle) || GamePiece5.crashWith(blackObstacle) ||
+    GamePiece5.crashWith(blueObstacle) ||
+    GamePiece5.crashWith(area)) {
       if(GamePiece5.crashWith(area)) {
         alert("O quadrado vermelho ganhou, por favor aperte F5");
       }
       alert("O quadrado vermelho perdeu, por favor aperte F5");
-      GamePiece5.stop();
+      
     }
-    else if (GamePiece6.crashWith(obstacle)|| GamePiece6.crashWith(obstacle2)
-    || GamePiece6.crashWith(obstacle3)|| GamePiece6.crashWith(obstacle4)
-    || GamePiece6.crashWith(area)) {
+    else if (GamePiece6.crashWith(obstacle)|| GamePiece6.crashWith(obstacle2) || 
+    GamePiece6.crashWith(obstacle3)|| GamePiece6.crashWith(obstacle4) ||
+    GamePiece6.crashWith(obstacle5) || GamePiece6.crashWith(obstacle6) ||
+    GamePiece6.crashWith(obstacle8) || GamePiece6.crashWith(obstacle9) ||
+    GamePiece6.crashWith(greenObstacle) || GamePiece6.crashWith(greyObstacle) ||
+    GamePiece6.crashWith(blueObstacle) || GamePiece6.crashWith(redObstacle) ||
+    GamePiece6.crashWith(blackObstacle) || 
+    GamePiece6.crashWith(area)) {
       if(GamePiece6.crashWith(area)) {
         alert("O quadrado laranja ganhou, por favor aperte F5");
       }
       alert("O quadrado laranja perdeu, por favor aperte F5");
-      GamePiece6.stop();
+      
     }
     else {
     myGameArea.clear();
@@ -250,13 +300,25 @@ function updateGameArea() {
     GamePiece5.newPosRed();
     GamePiece5.update();
     //peça laranja
-    GamePiece6.newPosOrange();
+    GamePiece6.newPosOrange(GamePiece6);
     GamePiece6.update()
+    // GamePiece7.update();
     //OBSTACULOS
     obstacle.update();
     obstacle2.update();
     obstacle3.update();
     obstacle4.update();
+    obstacle5.update();
+    obstacle6.update();
+    obstacle7.update();
+    obstacle8.update();
+    obstacle9.update();
+    blueObstacle.update();
+    redObstacle.update();
+    greyObstacle.update();
+    blackObstacle.update();
+    greenObstacle.update();
+    orangeObstacle.update();
     //AREA DE VITÓRIA
     area.update();
   }
