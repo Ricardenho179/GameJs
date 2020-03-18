@@ -44,12 +44,19 @@ function componentAutomatic(width, height, color, x, y, type) {
       ctx.restore();    
   }
   this.newPosBlue = function() {
-    // this.angle += this.moveAngle * Math.PI / 30;
+    this.angle += this.moveAngle * Math.PI / 30;
     this.x += this.speed * 2;
-    this.y -= this.speed * 0;
     if (this.x >= 290) {
       this.x -= this.speed * 2;
-      this.y += this.speed * 0;
+      this.y += this.speed * 2;
+      if (this.y >= 215) {
+        this.y -= this.speed * 2;
+        this.x += this.speed * 2;
+        if(this.x >= 710){
+          this.x -= this.speed * 2;
+          this.y -= this.speed * 2;
+        }
+      }
     }
   }
   this.newPosRed = function() {
